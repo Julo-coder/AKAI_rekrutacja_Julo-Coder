@@ -1,148 +1,95 @@
-/*
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    AKAI Frontend Task - CSS
-
-    Spróbuj zmodyfikować poniższy plik ze stylami tak, by upiększyć formularz na stronie.
-    Jako inspiracji możesz skorzystać z szablonu znajdującego się w pliku img/layout.png
-    Nie wymagamy, by wykonać identyczny layout. Liczy się kreatywność.
-
-    Przy wykonywaniu zadania można zmienić strukturę pliku index.html.
-    Pamiętaj, że w takim wypadku będzie trzeba zadbać o dostosowanie odpowiednich selektorów.
-
-    Jeśli korzystasz z preprocessorów takich jak Sass/Less, również możesz się tym pochwalić.
-
-    Powodzenia!
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*/
-
-
-/*
-Przeanalizuj składnię pliku .css.
-Przy stylowaniu na najpierw podajemy, co chcemy ostylować, a następnie jakie atrybuty chcemy zmienić.
-np. poniższy selektor (body) oznacza, że modyfikujemy kontent body w dokumencie html.
-Żeby mieć pewność o czym mowa, zajrzyj w plik index.html, i znajdź tag <body>.
-*/
 body {
-  /*
-  wszystko co znajduje się pomiędzy nawiasami klamrowymi, to nasze polecenia modyfikujące określony element dokumentu
-  Poniżej zmieniamy atrybut font-family, który jest odpowiedzialny za wyświetlaną na stronie czcionkę
-  Zastanów się, czy Comic Sans jest odpowiedni.
-  Jeśli nie, wybierz inną czcionkę i zmodyfikuj poniższy tekst.
-  */
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-family: 'Poppins', sans-serif;
+  background-color: #626267;
+  margin: auto;
+  width: 100%;
 }
-
-/*
-selektor gwiazdki oznacza, że odnosimy się do konkretnego 'id' w pliku html.
-w tym przypadku odnosimy się do id "task-frontend".
-Zobacz, co się kryje pod tym id w pliku index.html.
-*/
 
 #task-frontend {
-  /*
-  pomiędzy nawiasami klamrowymi ponownie możemy modyfikować atrybuty wybranego elementu.
-  Opiszę krótko, co dzieje się w poniższym przykładzie:
-  */
-
-  /*
-  border modyfikuje obramowanie elementu. Obramowanie zawiera w sobie trzy atrybuty: grubość, styl i kolor.
-  Można się do nich odnosić indywidualnie, albo do wszystkich na raz, tak jak jest to zrobione poniżej.
-  Spróbuj dostosować obramowanie tak, żeby lepiej się prezentowało. Oczywiście, jeśli uważasz, że obramowanie nie jest potrzebne,
-  możesz zrezygnować z modyfikacji tego atrybutu. Domyślnie elementy nie posiadają obramowania, więc wystarczy usunąć poniższą linię.
-  */
-  border: 4px solid black;
-
-  /*
-  max-width ustawia maksymalną szerokość dla wybranego elementu. Oznacza to, że element osiągnie co najwyżej taką szerokość.
-  Natomiast jeśli nie będzie to możliwe (okno będzie mniejsze), to element skurczy się wraz z tym oknem.
-  */
-	max-width: 850px;
-
-  /*
-  atrybut margin definiuje miejsce wolne poza obramowaniem elementu.
-  margin jest jednym ze składowych bardzo ważnego pojęcia w CSS, które nazywamy Box Model.
-  Zachęcam do poczytania więcej na ten temat, np. pod adresem:
-  https://www.w3schools.com/css/css_boxmodel.asp
-
-  W poniższym przypadku ustawiamy wartość margin na górze i dole równą 0, zaś po bokach 'auto' - co oznacza,
-  że wartości po lewej i prawej będą obliczone przez przeglądarkę podczas renderowania strony, tak, aby margin-left i margin-right
-  otrzymały taką samą wartość, co będzie skutowało tym, że element zostanie na stronie wycentrowany.
-  */
-  margin: 0 auto;
-
-  /*
-  atrybut text-align definiuje horyzontalne umieszczenie (wyrównanie) tekstu.
-  Wartość center oznacza, że chcemy umieścić tekst na środku.
-  */
-	text-align: center;
-
-  /*
-  background-color definiuje kolor tła w elemencie.
-  CSS zawiera prefediniowane wartości takie jak white, red, black, etc, ale można również tworzyć własne
-  poprzez podanie odpowiedniej wartości rgba
-  */
-  background-color: white;
-
-  /*
-  zamykająca klamra oznacza, że kończymy modyfikować atrybuty danego elementu
-  */
+  position: absolute;
+  top: 25%;
+  left: 36%;
+  margin: auto;
+  width: 500px;
+  height: 400px;
+  background-color: #315659;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-
-/*
-jeśli widzisz dwa elementy (A, B) oddzielone spacją, oznacza to, że modyfikujemy wszystkie elementy B, które zawierają się w A.
-W poniższym przypadku modyfikujemy wszystkie elementy z klasą "basic-title", które znajdują się w elemencie o id "task-frontend".
-*/
-#task-frontend .basic-title {
-  /*
-  atrybut 'color' definiuje kolor tekstu w elemencie.
-  Zastanów się, czy kolor czerwony jest odpowiedni.
-  Jeśli nie, zmodyfikuj poniższy tekst wedle własnego uznania.
-  */
+.basic-title {
+  margin: auto;
   color: red;
+  height: 25%;
+  width: 100%;
+  display: flex;
 }
 
-/*
-podobna sytuacja występuje poniżej. Wybieramy wszystkie elementy z klasą 'form-line' znajdujące się w elemencie o id 'task-frontend'.
-*/
-#task-frontend .form-line {
-  border: 1px solid blue;
+h1{
+  margin: auto;
+  font-size: 30px;
+  color: #ED691D;
 }
 
+form{
+  height: 75%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2%;
+}
 
-/*
-znasz już sposób definiowania selektorów.
-Oczywiście nie przerobiliśmy jeszcze wszystkich. W związku z tym zachęcam Cię do zapoznania się z innymi selektorami, np. tutaj:
-https://www.w3schools.com/cssref/css_selectors.asp
-Chciałbym, byś przeanalizowała / przeanalizował poniższe style i zmodyfikować je według własnego uznania.
-*/
+.sections{
+  display: flex;
+  margin: auto;
+  gap: 10px;
+}
+
 
 #task-frontend form>label {
   text-transform: uppercase;
-	margin: 10px auto 0 auto;
 }
 
-#task-frontend input[type="text"], #task-frontend input[type="email"] {
-  display: block;
-  margin: 10px auto;
-  border: 1px solid black;
-  width: 250px;
-  height: 30px;
+.submit__btn{
+  position: relative;
+  margin: auto;
+  bottom: 5%;
+  background-color: #97DB4F;
+  border: none;
+  border-radius: 20px;
+  width: 100px;
+  height: 40px;
+  font-size: 17px;
+  font-weight: bold;
 }
 
-#task-frontend span {
-  display: block;
+.text__input{
+  width: 60%;
+  height: 25px;
+  border-radius: 20px;
+  border: none;
+  padding-left: 3%;
 }
 
-#task-frontend input[type="checkbox"] {
-	border: 1px solid red;
-	text-transform: none;
+.checkbox__input:checked{
+  accent-color: #97DB4F;
 }
 
-#task-frontend input[type="submit"] {
-	color: green;
-	margin-top: 10px;
-	width: 100px;
-	height: 30px;
-	text-align: center;
+.submit__btn.grow{
+    transition: all .2s ease-in-out;
+}
+
+.submit__btn:hover{
+    transform: scale(1.5);
+}
+
+p{
+  position: relative;
+  top: 3%;
+  font-weight: bold;
+  margin: auto;
 }
