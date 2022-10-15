@@ -20,6 +20,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="js/validation.js" defer></script>
 </head>
 <body>
     <!--
@@ -38,14 +39,14 @@
 			<h1>Dołącz do nas</h1>
 		</section>
 
-		<form method="POST">
+		<form onsubmit="checkForm();">
 
 			<!-- od użytkownika pobieramy imię, nazwisko, email oraz informację, do jakiej sekcji chce dołączyć -->
 
 			
 		    <input type="text" id="first-name" placeholder="Imię" class="text__input"/>
 		    <input type="text" id="last-name" placeholder="Nazwisko" class="text__input"/>
-		    <input type="email" id="email" placeholder="Email" class="text__input"/>
+		    <input type="email" id="email" placeholder="email@example.domain" class="text__input"/>
 
 			<p>Sekcja, która Cię interesuje</p>
 			
@@ -60,7 +61,7 @@
             	<input type="checkbox" id="graphics-checkbox" name="section" value="frontend" class="checkbox__input">
             	<label for="graphics-checkbox">Grafika</label>
 			</section>
-            <input type="submit" value="Prześlij" class="submit__btn grow">
+            <button type="submit" class="btn submit__btn grow">Prześlij</button>
 		</form>
 
 	</section>
@@ -74,7 +75,7 @@
 
 
 <!-- zaimportowanie pliku z kodem javascript, który dokona walidacji danych (zadanie JS) -->
-<script type="text/javascript" src="js/validation.js"></script>
+
 
 </body>
 </html>
