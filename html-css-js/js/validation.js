@@ -14,11 +14,12 @@ const nameInput = document.querySelector('#first-name');
 const lastNameInput = document.querySelector('#last-name');
 const emailInput = document.querySelector('#email');
 const btn = document.querySelector(".btn");
+const checkboxes = document.querySelectorAll('input[type=checkbox]')
 
 const checkForm = () =>{
     event.preventDefault()
     if(nameInput.value == "" && lastNameInput.value == "" && emailInput.value == ""){
-        console.log("Puste inputy");
+        alert("You cannot leave the input empty!!")
     }else if(nameInput.value == "" || lastNameInput.value == "" || emailInput.value == "" ){
         let allInputValues = []
         allInputValues.push(nameInput)
@@ -26,10 +27,19 @@ const checkForm = () =>{
         allInputValues.push(emailInput)
         for(i of allInputValues){
             if(i.value == ""){
-                console.log(i);
+                alert("One of the inputs are empty. Please fill all of them.");
+                break;
             }
         }
     }
-    
 
+    let checkedCheckbox = []
+    for(check of checkboxes){
+        if(check.checked){
+            checkedCheckbox.push(document.querySelector(`#${check.id}`).checked)
+        }
+    };
+    if(checkedCheckbox.length == 0){
+        alert("You must select one thing");
+    }
 }
