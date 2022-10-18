@@ -13,7 +13,6 @@
 const nameInput = document.querySelector('#first-name');
 const lastNameInput = document.querySelector('#last-name');
 const emailInput = document.querySelector('#email');
-const btn = document.querySelector(".btn");
 const checkboxes = document.querySelectorAll('input[type=checkbox]')
 
 const checkForm = () =>{

@@ -1,15 +1,34 @@
+import "./data.js";
 /*
   1. W pliku data.js pod zmienna "pokemons" znajduje się tablica zawierająca dane wielu pokemonów, masz do niej dostęp również w tym pliku. 
   Chciałbym, abyś użył jej do wyświetlenia wszystkich pokemonów w naszym Pokedexie. 
-  W tym celu dla każdego z nich możesz stworzyć nowy element drzeewa DOM i umieścić w nim informacje o Pokemonie (możesz zawrzeć tam jego nazwę, zdjęcie, a na kontener w którym się znajduje nadać specjalną klasę zależnie od typu)
+  W tym celu dla każdego z nich możesz stworzyć nowy element drzewa DOM i umieścić w nim informacje o Pokemonie (możesz zawrzeć tam jego nazwę, zdjęcie, a na kontener w którym się znajduje nadać specjalną klasę zależnie od typu)
 */
 
 // tutaj złapiemy sekcję, do której będziemy dodawać pokemony
 const pokemonsContainer = document.querySelector(".pokemons");
+const pokemonsName = document.querySelector("#pokemon-name");
+const pokemonsType = document.querySelectorAll("input[type='checkbox']");
+let userPokemons = []
+let filter;
 
 function renderPokemons(pokemons) {
-  // uzupełnij tutaj
+  for(let pokemon = 0; pokemon < pokemons.length; pokemon ++){
+      const typesPokemon = pokemons[pokemon].types
+      filter = userPokemons.map(d => d == typesPokemon[0] || d == typesPokemon[1])
+      let g;
+      for(g of filter){
+        if(g){
+          console.log(pokemons[pokemon].name);
+          pokemonsContainer.innerHTML += `<div class ="${pokemons[pokemon].name}"><img src="${pokemons[pokemon].image}"></div>`;
+          
+        };  
+        }
+        
+      }
+      
 }
+;
 
 // następnie wykonaj uzupełnioną metodę z tablicą pokemons, aby sprawdzić czy wszystko działa
 // renderPokemons(pokemons);
@@ -21,17 +40,37 @@ function renderPokemons(pokemons) {
   - filtrowanie po nazwie (wpisany fragment zawiera się w nazwie pokemona)
 */
 
-function filterPokemons(pokemons) {
-  // uzupełnij tutaj
-  // zwróć odfiltrowaną tablicę pokemonów
-}
+
+
+function filterPokemons() {
+
+  let type;
+  for(type of pokemonsType){
+    if(type.checked){
+      userPokemons.push(type.id);
+    };
+  };
+  
+  if(pokemonsName.value != ""){
+    userPokemons.push(pokemonsName.value)
+  }
+  
+  console.log(userPokemons);
+};
+
+
 
 const form = document.querySelector("form");
 
 function submitForm(event) {
   event.preventDefault();
+  filterPokemons();
+  renderPokemons(pokemons);
+  userPokemons = []
+  filter = []
   // następnie wykonaj uzupełnioną metodę z tablicą pokemons, aby sprawdzić czy wszystko działa
   // renderPokemons(filterPokemons(pokemons));
+  
 }
 
 form.addEventListener("submit", submitForm);
