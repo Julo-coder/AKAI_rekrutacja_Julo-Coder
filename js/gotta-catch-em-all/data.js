@@ -702,7 +702,7 @@ const pokemons = [
   {
     types: ["psychic", "fairy"],
     id: 122,
-    name: "Mr. Mime",
+    name: "Mr.Mime",
     image:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/122.png"
   },

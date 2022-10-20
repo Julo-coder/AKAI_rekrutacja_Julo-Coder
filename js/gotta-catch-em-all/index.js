@@ -9,27 +9,21 @@ import "./data.js";
 const pokemonsContainer = document.querySelector(".pokemons");
 const pokemonsName = document.querySelector("#pokemon-name");
 const pokemonsType = document.querySelectorAll("input[type='checkbox']");
-let userPokemons = []
+let userPokemons = [];
 let filter;
 
 function renderPokemons(pokemons) {
   for(let pokemon = 0; pokemon < pokemons.length; pokemon ++){
-      const typesPokemon = pokemons[pokemon].types
-      filter = userPokemons.map(d => d == typesPokemon[0] || d == typesPokemon[1])
-      let g;
-      for(g of filter){
-        if(g){
-          console.log(pokemons[pokemon].name);
-          pokemonsContainer.innerHTML += `<div class ="${pokemons[pokemon].name}"><img src="${pokemons[pokemon].image}"></div>`;
-          
-        };  
-        }
-        
-      }
-      
-}
-;
-
+    let div = document.createElement('div');
+    let img = new Image();
+    img.src = `${pokemons[pokemon].image}`;
+    div.classList.add(`${pokemons[pokemon].name}`);
+    div.appendChild(img)
+    pokemonsContainer.appendChild(div)
+    // pokemonsContainer.innerHTML += `<div class ="${pokemons[pokemon].name}"><img src="${pokemons[pokemon].image}"></div>`;
+  };
+};
+renderPokemons(pokemons)
 // następnie wykonaj uzupełnioną metodę z tablicą pokemons, aby sprawdzić czy wszystko działa
 // renderPokemons(pokemons);
 
@@ -40,12 +34,11 @@ function renderPokemons(pokemons) {
   - filtrowanie po nazwie (wpisany fragment zawiera się w nazwie pokemona)
 */
 
+// TODO: Usunąć wszystkie znaki ze stringów w pokemons
+// TODO: Stylizacja CSS
 
-
-function filterPokemons() {
-
-  let type;
-  for(type of pokemonsType){
+function filterPokemons(pokemons) {
+  for(let type of pokemonsType){
     if(type.checked){
       userPokemons.push(type.id);
     };
@@ -55,7 +48,23 @@ function filterPokemons() {
     userPokemons.push(pokemonsName.value)
   }
   
-  console.log(userPokemons);
+  for(let pokemon = 0; pokemon < pokemons.length; pokemon ++){
+    const typesPokemon = pokemons[pokemon].types
+    filter = userPokemons.map(d => d == typesPokemon[0] || d == typesPokemon[1]);
+    for(let g of filter){
+      if(g){
+          console.log(pokemons[pokemon].id);
+      }else{
+        let allDiv = document.querySelectorAll(`.${pokemons[pokemon].name}`);
+        for(let el of allDiv){
+          el.style.visibility = "hidden";
+          el.style.display = "none";
+        }
+      };  
+      }
+      
+    }
+    
 };
 
 
@@ -64,8 +73,7 @@ const form = document.querySelector("form");
 
 function submitForm(event) {
   event.preventDefault();
-  filterPokemons();
-  renderPokemons(pokemons);
+  filterPokemons(pokemons);
   userPokemons = []
   filter = []
   // następnie wykonaj uzupełnioną metodę z tablicą pokemons, aby sprawdzić czy wszystko działa
