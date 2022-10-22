@@ -16,13 +16,15 @@ function renderPokemons(pokemons) {
   for(let pokemon = 0; pokemon < pokemons.length; pokemon ++){
     let div = document.createElement('div');
     let img = new Image();
+    let className = pokemons[pokemon].name
     img.src = `${pokemons[pokemon].image}`;
-    div.classList.add(`${pokemons[pokemon].name}`);
+    div.classList.add(`${className.replace(/[^a-zA-Z ]/g, "")}`);
     div.appendChild(img)
     pokemonsContainer.appendChild(div)
     // pokemonsContainer.innerHTML += `<div class ="${pokemons[pokemon].name}"><img src="${pokemons[pokemon].image}"></div>`;
   };
 };
+
 renderPokemons(pokemons)
 // następnie wykonaj uzupełnioną metodę z tablicą pokemons, aby sprawdzić czy wszystko działa
 // renderPokemons(pokemons);
@@ -34,7 +36,7 @@ renderPokemons(pokemons)
   - filtrowanie po nazwie (wpisany fragment zawiera się w nazwie pokemona)
 */
 
-// TODO: Usunąć wszystkie znaki ze stringów w pokemons
+// TODO: Usunąć wszystkie znaki ze stringów w pokemons done
 // TODO: Stylizacja CSS
 
 function filterPokemons(pokemons) {
@@ -55,7 +57,8 @@ function filterPokemons(pokemons) {
       if(g){
           console.log(pokemons[pokemon].id);
       }else{
-        let allDiv = document.querySelectorAll(`.${pokemons[pokemon].name}`);
+        let className = pokemons[pokemon].name
+        let allDiv = document.querySelectorAll(`.${className.replace(/[^a-zA-Z ]/g, "")}`);
         for(let el of allDiv){
           el.style.visibility = "hidden";
           el.style.display = "none";
