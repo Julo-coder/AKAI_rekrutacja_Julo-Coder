@@ -11,9 +11,10 @@ const pokemonsName = document.querySelector("#pokemon-name");
 const pokemonsType = document.querySelectorAll("input[type='checkbox']");
 let userPokemons = [];
 let filter;
-let div = document.createElement('div');
+
 function renderPokemons(pokemons) {
   for(let pokemon = 0; pokemon < pokemons.length; pokemon ++){
+    let div = document.createElement('div');
     let img = new Image();
     div.classList.add(`${pokemons[pokemon].name.replace(/[^a-zA-Z ]/g, "")}`);
     div.classList.add("div__pokemon")
