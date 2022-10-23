@@ -11,17 +11,15 @@ const pokemonsName = document.querySelector("#pokemon-name");
 const pokemonsType = document.querySelectorAll("input[type='checkbox']");
 let userPokemons = [];
 let filter;
-
+let div = document.createElement('div');
 function renderPokemons(pokemons) {
   for(let pokemon = 0; pokemon < pokemons.length; pokemon ++){
-    let div = document.createElement('div');
     let img = new Image();
-    let className = pokemons[pokemon].name
+    div.classList.add(`${pokemons[pokemon].name.replace(/[^a-zA-Z ]/g, "")}`);
+    div.classList.add("div__pokemon")
     img.src = `${pokemons[pokemon].image}`;
-    div.classList.add(`${className.replace(/[^a-zA-Z ]/g, "")}`);
     div.appendChild(img)
     pokemonsContainer.appendChild(div)
-    // pokemonsContainer.innerHTML += `<div class ="${pokemons[pokemon].name}"><img src="${pokemons[pokemon].image}"></div>`;
   };
 };
 
@@ -36,7 +34,6 @@ renderPokemons(pokemons)
   - filtrowanie po nazwie (wpisany fragment zawiera się w nazwie pokemona)
 */
 
-// TODO: Usunąć wszystkie znaki ze stringów w pokemons done
 // TODO: Stylizacja CSS
 
 function filterPokemons(pokemons) {
@@ -55,20 +52,11 @@ function filterPokemons(pokemons) {
     filter = userPokemons.map(d => d == typesPokemon[0] || d == typesPokemon[1]);
     for(let g of filter){
       if(g){
-          console.log(pokemons[pokemon].id);
-      }else{
-        let className = pokemons[pokemon].name
-        let allDiv = document.querySelectorAll(`.${className.replace(/[^a-zA-Z ]/g, "")}`);
-        for(let el of allDiv){
-          el.style.visibility = "hidden";
-          el.style.display = "none";
-        }
-      };  
+
       }
-      
     }
-    
-};
+  }
+}
 
 
 
@@ -77,6 +65,7 @@ const form = document.querySelector("form");
 function submitForm(event) {
   event.preventDefault();
   filterPokemons(pokemons);
+  
   userPokemons = []
   filter = []
   // następnie wykonaj uzupełnioną metodę z tablicą pokemons, aby sprawdzić czy wszystko działa
